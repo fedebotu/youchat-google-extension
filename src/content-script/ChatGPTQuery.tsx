@@ -7,7 +7,6 @@ import Browser from "webextension-polyfill";
 import { Answer } from "../messaging";
 import ChatGPTFeedback from "./ChatGPTFeedback";
 import { isBraveBrowser, shouldShowTriggerModeTip } from "./utils.js";
-import remarkReferenceLinks from "remark-reference-links";
 
 interface Props {
   question: string;
@@ -82,7 +81,6 @@ function ChatGPTQuery(props: Props) {
           />
         </div>
         <ReactMarkdown
-          remarkPlugins={[remarkReferenceLinks]}
           rehypePlugins={[[rehypeHighlight, { detect: true }]]}
         >
           {answer.text}
