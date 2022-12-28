@@ -32,7 +32,9 @@ _Notice: Brave/Opera users please follow [Troubleshooting](#troubleshooting) sec
 
 #### Install from Chrome Web Store (Preferred)
 
-<https://chrome.google.com/webstore/detail/chatgpt-for-google/jgjaeacdkonaoafenlfkkkmbaopkbilf>
+<!-- <https://chrome.google.com/webstore/detail/chatgpt-for-google/jgjaeacdkonaoafenlfkkkmbaopkbilf>
+ -->
+ Coming soon!
 
 #### Local Install
 
@@ -46,8 +48,8 @@ _Notice: Brave/Opera users please follow [Troubleshooting](#troubleshooting) sec
 
 #### Install from Mozilla Add-on Store (Preferred)
 
-<https://addons.mozilla.org/addon/chatgpt-for-google/>
-
+<!-- <https://addons.mozilla.org/addon/chatgpt-for-google/> -->
+Coming soon!
 #### Local Install
 
 1. Download `firefox.zip` from [Releases](https://github.com/fedebotu/youchat-google-extension/releases).
