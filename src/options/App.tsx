@@ -45,21 +45,21 @@ function OptionsPage(props: {
         </div>
         <div className="flex flex-row gap-3">
           <a
-            href="https://chatgpt-for-google.canny.io/feature-requests"
+            href="https://github.com/fedebotu/youchat-google-extension/issues"
             target="_blank"
             rel="noreferrer"
           >
             Feedback
           </a>
           <a
-            href="https://chatgpt-for-google.canny.io/changelog"
+            href="https://github.com/fedebotu/youchat-google-extension/issues"
             target="_blank"
             rel="noreferrer"
           >
             Changelog
           </a>
           <a
-            href="https://github.com/wong2/chat-gpt-google-extension"
+            href="https://github.com/fedebotu/youchat-google-extension"
             target="_blank"
             rel="noreferrer"
           >

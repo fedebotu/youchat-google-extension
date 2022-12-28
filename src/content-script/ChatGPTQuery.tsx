@@ -120,7 +120,7 @@ function ChatGPTQuery(props: Props) {
           <span>
             <br />
             Still not working? Follow{" "}
-            <a href="https://github.com/wong2/chat-gpt-google-extension#troubleshooting">
+            <a href="https://github.com/fedebotu/youchat-google-extension#troubleshooting">
               Brave Troubleshooting
             </a>
           </span>
