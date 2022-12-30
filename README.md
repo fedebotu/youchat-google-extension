@@ -1,5 +1,15 @@
 # YouChat for Google
 
+<p align='center'>
+  <a href="https://chrome.google.com/webstore/detail/youchat-ai-for-google/fadggkehmhkhahfcdeoghpepnpnhilhg">
+    <img src='https://user-images.githubusercontent.com/776467/172134806-68c06ee3-a032-45bc-a9cf-0cd7ca7288d8.png' alt='Chrome Web Store Add-on' title="Link to the extension's page on the Chrome Web Store">
+  </a>
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/youchat-ai-for-google/">
+    <img src='https://user-images.githubusercontent.com/776467/172134802-013d3af2-00fa-45a4-94f7-a772ff29fab0.png' alt='Firefox Add-on' title="Link to the extension's page on the Firefox Add-ons website">
+  </a>
+</p>
+
+
 A browser extension to display YouChat response - like ChatGPT, but with knowledge of recent events and source citation - alongside Google and other search engines results, supports Chrome/Edge/Firefox
 
 ## Supported Search Engines
@@ -32,9 +42,9 @@ _Notice: Brave/Opera users please follow [Troubleshooting](#troubleshooting) sec
 
 #### Install from Chrome Web Store (Preferred)
 
-<!-- <https://chrome.google.com/webstore/detail/chatgpt-for-google/jgjaeacdkonaoafenlfkkkmbaopkbilf>
- -->
- Coming soon!
+<a href="https://chrome.google.com/webstore/detail/youchat-ai-for-google/fadggkehmhkhahfcdeoghpepnpnhilhg"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_128x128.png" width="24" /></a>
+[Chrome Web Store Link](https://chrome.google.com/webstore/detail/youchat-ai-for-google/fadggkehmhkhahfcdeoghpepnpnhilhg)
+
 
 #### Local Install
 
@@ -48,8 +58,9 @@ _Notice: Brave/Opera users please follow [Troubleshooting](#troubleshooting) sec
 
 #### Install from Mozilla Add-on Store (Preferred)
 
-<!-- <https://addons.mozilla.org/addon/chatgpt-for-google/> -->
-Coming soon!
+ <a href="https://addons.mozilla.org/en-US/firefox/addon/youchat-ai-for-google/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_128x128.png" width="24" /></a>
+[Mozilla Add-ons Store Link](https://addons.mozilla.org/en-US/firefox/addon/youchat-ai-for-google/)
+
 #### Local Install
 
 1. Download `firefox.zip` from [Releases](https://github.com/fedebotu/youchat-google-extension/releases).
