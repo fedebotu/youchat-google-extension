@@ -11,6 +11,10 @@ import {
 import logo from "../logo.png";
 import { detectSystemColorScheme } from "../utils";
 
+const openInNewTab = (url) => {
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
 function OptionsPage(props: {
   theme: Theme;
   onThemeChange: (theme: Theme) => void;
@@ -99,6 +103,22 @@ function OptionsPage(props: {
             );
           })}
         </Radio.Group>
+        
+        <p className="italic mt-2">
+            
+            Note that this is an unofficial extension and not affiliated with{" "}
+            <span
+              className="underline cursor-pointer"
+              onClick={() =>
+                openInNewTab(
+                  "https://you.com/search?q=what%20was%20the%20recent%20breakthrough%20in%20fusion%20research%3F"
+                )
+              }
+            >
+              YouChat
+            </span>
+            .
+          </p>
       </main>
     </div>
   );

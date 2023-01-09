@@ -36,6 +36,7 @@ function ChatGPTCard(props: Props) {
       <SearchIcon size="small" /> Ask YouChat for this query
     </p>
   );
+  
 }
 
 export default ChatGPTCard;

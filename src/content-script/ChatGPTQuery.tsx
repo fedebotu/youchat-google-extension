@@ -78,6 +78,7 @@ function ChatGPTQuery(props: Props) {
           <ChatGPTFeedback
             messageId={answer.messageId}
             conversationId={answer.conversationId}
+            answerText={answer.text}
           />
         </div>
         <ReactMarkdown
@@ -85,58 +86,48 @@ function ChatGPTQuery(props: Props) {
         >
           {answer.text}
         </ReactMarkdown>
-        {done && showTip && (
-          <p className="italic mt-2">
-            Tip: you can switch to manual trigger mode in{" "}
-            <span
-              className="underline cursor-pointer"
-              onClick={openOptionsPage}
-            >
-              extension settings
-            </span>
-            . Note that this is an unofficial extension and not affiliated with{" "}
-            <span
-              className="underline cursor-pointer"
-              onClick={() =>
-                openInNewTab(
-                  "https://you.com/search?q=what%20was%20the%20recent%20breakthrough%20in%20fusion%20research%3F"
-                )
-              }
-            >
-              YouChat
-            </span>
-            .
-          </p>
-        )}
       </div>
     );
   }
 
-  if (error === "UNAUTHORIZED" || error === "CLOUDFLARE") {
+  
+  if (error === 'UNAUTHORIZED' || error === 'CLOUDFLARE' || error === 'FORBIDDEN' || error.trim() === '403') {
     return (
       <p className="gpt-inner">
-        To be fixed
-        {isBraveBrowser() && retry > 0 && (
-          <span>
-            <br />
-            Still not working? Follow{" "}
-            <a href="https://github.com/fedebotu/youchat-google-extension#troubleshooting">
-              Brave Troubleshooting
-            </a>
-          </span>
-        )}
+        Please login and pass Cloudflare check at{' '}
+        <a href="https://you.com/" target="_blank" rel="noreferrer">
+          you.com
+        </a>
+        {retry > 0 &&
+          (() => {
+            if (isBraveBrowser()) {
+              return (
+                <span className="block mt-2">
+                  Still not working? Follow{' '}
+                  <a href="https://github.com/fedebotu/youchat-google-extension#troubleshooting">
+                    Brave Troubleshooting
+                  </a>
+                </span>
+              )
+            } else {
+              return (
+                <span className="italic block mt-2 text-xs">
+                  YouChat requires passing a security check every once in a while.
+                </span>
+              )
+            }
+          })()}
       </p>
-    );
+    )
   }
+  
   if (error) {
     return (
-      // print error to screen
       <p className="gpt-inner">
         Failed to load response from YouChat:
         <br /> {error}
-        {/* <br /> {answer} */}
       </p>
-    );
+    )
   }
 
   return (
