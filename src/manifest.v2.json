@@ -1,7 +1,7 @@
 {
   "name": "YouChat AI for Google",
   "description": "Display YouChat AI response alongside Google Search results",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "manifest_version": 2,
   "icons": {
     "16": "logo.png",
