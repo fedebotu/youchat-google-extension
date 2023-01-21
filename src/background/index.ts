@@ -1,5 +1,6 @@
+import { string } from "prop-types";
 import Browser from "webextension-polyfill";
-import { Answer } from "../messaging.js";
+import { Answer, Link} from "../messaging.js";
 import { sendMessageFeedback, setConversationProperty } from "./chatgpt.js";
 import { fetchSSE } from "./fetch-sse.js";
 
@@ -20,37 +21,72 @@ async function generateAnswers(port: Browser.Runtime.Port, question: string) {
   let messages = [];
 
   await fetchSSE(
-    "https://you.com/api/youchatStreaming?question=" + question + "&chat=[]",
+    // "https://you.com/api/youchatStreaming?question=" + question + "&chat=[]",
+    "https://you.com/api/streamingSearch?q=" + question + "&domain=youchat",
+
     {
       method: "GET",
       signal: controller.signal,
 
-      // NOTE: possibly this boy is not the best, better look for "done" or "end" or something
-      onMessage(message: string) {
+      // We parse the full event here.
+      // NOTE: [Future work]  We could even parse the full internal search results!
+      onMessage(message: any) {
+
         console.debug("sse message", message);
-        if (message === "I'm Mr. Meeseeks. Look at me.") {
-          port.postMessage({ event: "DONE" });
-          deleteConversation();
-          return;
-        }
         messages.push(message);
 
         let text = String("");
+        let serpResults = [];
+        let urlCount = 1;
+        let links = [];
 
         for (const message of messages) {
-          const obj = JSON.parse(message);
-          const token = obj.token;
+       
+          const obj = JSON.parse(message.data);
 
-          //if undefined, remove
-          if (token === undefined) {
-            continue;
+          let new_text = String("");
+
+          // add to text key youChatToken and its value if it exists
+          if (obj.hasOwnProperty('youChatToken')) {
+            new_text = obj.youChatToken;
           }
-          text += token;
-        }
 
+          // Internal results
+          if (obj.hasOwnProperty('youChatSerpResults')) {
+            serpResults = obj.youChatSerpResults;
+          }
+
+          // if serpResults is not empty, detect if the text contains a url. if so, get the urlCount index
+          // and replace it with the name of the url
+          // for example: [8][https//google.com] -> [1][https//google.com]
+          if (serpResults.length > 0) {
+            for (const result of serpResults) {
+              if (new_text.includes(result.url)) {
+
+                let linkIndex = 0;
+                if (!links.some((link) => link.url === result.url)) {
+                  links.push({index: urlCount, name: result.name, url: result.url} as Link);
+                  linkIndex = urlCount;
+                  urlCount++;
+                }
+                else {
+                  linkIndex = links.find((link) => link.url === result.url).index;
+                }               
+                text = text.replace(result.url, `[[${linkIndex}]](${result.url})`);
+                new_text = `[[${linkIndex}]](${result.url})`;
+              }
+            }
+          }
+          text += new_text;      
+        }
+        
         if (text) {
           port.postMessage({
             text,
+            links: links,
+            status: 'done',
+            messageId: 'dummy',
+            conversationId: 'dummy',
           } as Answer);
         }
       },

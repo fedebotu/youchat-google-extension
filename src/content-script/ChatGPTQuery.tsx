@@ -86,6 +86,19 @@ function ChatGPTQuery(props: Props) {
         >
           {answer.text}
         </ReactMarkdown>
+        {answer.links &&
+          answer.links.map((link) => (
+            <div style={{textOverflow: "ellipsis"}} className="mt-2 hover:underline hover:pointer cursor-pointer flex flex-wrap" onClick={() => openInNewTab(link.url)}>
+              <div className="overflow-hidden max-w-xs">
+                <span className="text-sm" style={{textOverflow: "ellipsis"}}>
+                    <a href={'javascript:void(0)'}>[{link.index}] {link.name}</a>
+                  </span>
+              </div>
+              <div className="overflow-hidden max-w-xs">
+                <span className="text-xs text-gray-500" style={{textOverflow: "ellipsis"}} > {link.url}</span>
+              </div>
+            </div>
+          ))}
       </div>
     );
   }
