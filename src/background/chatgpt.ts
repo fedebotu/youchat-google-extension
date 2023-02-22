@@ -1,6 +1,6 @@
 async function request(method: string, path: string, data: unknown) {
   return fetch(
-    "https://you.com/api/youchatStreaming?question=" + data + "&chat=[]",
+    "https://you.com/api/streamingSearch?q=" + data + "&domain=youchat",
     {
       method,
       headers: {
