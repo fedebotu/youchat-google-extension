@@ -77,6 +77,22 @@ _Notice: Brave/Opera users please follow [Troubleshooting](#troubleshooting) sec
 
 ## Troubleshooting
 
+### Answer errors
+You may try a few steps to fix the errors:
+- Make sure to pass the Cloudflare challenge [here](https://you.com/api/streamingSearch?q=hi&domain=youchat).
+- When passing the challenge, remember to reload the page.
+- you.com may have implemented a login system; if this is the case you may login [here](https://you.com/api/auth/login).
+- If nothing works: you.com sometimes changes their API, in this case you may try to fix the extension yourself (see below) or wait for an update (please report the issue [here](https://github.com/fedebotu/youchat-google-extension/issues)).
+
+### API changes
+
+An API change happens when the request URL or the response format changes. For instance, as of February 2023, an example request is as follows: https://you.com/api/streamingSearch?q=hi&domain=youchat . 
+If you.com changes their API, you may try to fix the extension yourself by following these steps:
+- Open you.com and go into the chat. You will need to login first.
+- Open the developer tools (F12) and go to the Network tab. 
+- Submit your query and look for a request to the API.
+- Modify it and strip it down to the bare minimum until it works. At this point, you can modify [this line](https://github.com/fedebotu/youchat-google-extension/blob/c7b0cace23deacf613657f83a60d3a5c9ad9b7c2/src/background/chatgpt.ts#L3) to point to your modified request. 
+
 ### How to make it work in Brave
 
 ![Screenshot](screenshots/brave.png?raw=true)
@@ -93,3 +109,7 @@ Enable "Allow access to search page results" in the extension management page
 
 This project is heavily based on [wong2/chat-gpt-google-extension](https://github.com/wong2/chat-gpt-google-extension), give it a try - you can even use both YouChat and ChatGPT at the same time!
 Also: [ZohaibAhmed/ChatGPT-Google](https://github.com/ZohaibAhmed/ChatGPT-Google)
+
+
+## Contributing
+Feel free to open an issue or pull request if you have any questions or suggestions!
