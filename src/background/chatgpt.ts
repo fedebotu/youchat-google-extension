@@ -1,7 +1,8 @@
 async function request(method: string, path: string, data: unknown) {
+  const dataParam = JSON.stringify(data); // TODO: encode to replace special character #
+  const url = `https://you.com/api/streamingSearch?q=${dataParam}&domain=youchat`;
   return fetch(
-    "https://you.com/api/streamingSearch?q=" + data + "&domain=youchat",
-    {
+    url, {
       method,
       headers: {
         "Content-Type": "application/json",
