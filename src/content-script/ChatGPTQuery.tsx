@@ -103,14 +103,25 @@ function ChatGPTQuery(props: Props) {
     );
   }
 
-  
-  if (error === 'UNAUTHORIZED' || error === 'CLOUDFLARE' || error === 'FORBIDDEN' || error.trim() === '403') {
+
+  if (error === 'UNAUTHORIZED' || error === 'CLOUDFLARE' || error === 'FORBIDDEN' || error.includes('403')) {
     return (
       <p className="gpt-inner">
-        Please login and pass Cloudflare check at{' '}
-        <a href="https://you.com/" target="_blank" rel="noreferrer">
-          you.com
-        </a>
+        Please pass {' '}
+        <a href="https://you.com/api/streamingSearch?q=hi%20go&domain=youchat" target="_blank" rel="noreferrer">
+        Cloudflare
+        </a> first. You may close that tab after passing the check.
+
+        <span className="italic block mt-2 text-xs">
+          Still not working? Try to <a href="https://you.com/api/auth/login">login</a> to you.com as well.
+            You may also try <a href="https://github.com/fedebotu/youchat-google-extension#troubleshooting">these troubleshooting steps </a>. 
+            Otherwise, please report any issues <a href="https://github.com/fedebotu/youchat-google-extension/issues"> here </a>.
+        </span>
+
+        {/* {' '}
+        <a href="https://you.com/api/auth/login" target="_blank" rel="noreferrer">
+          here
+        </a> */}
         {retry > 0 &&
           (() => {
             if (isBraveBrowser()) {
@@ -139,6 +150,12 @@ function ChatGPTQuery(props: Props) {
       <p className="gpt-inner">
         Failed to load response from YouChat:
         <br /> {error}
+        <br />
+        <span className="italic block mt-2 text-xs">
+            Remember to <a href="https://you.com/api/auth/login">login</a> to You.com before using YouChat.
+            You may also try <a href="https://github.com/fedebotu/youchat-google-extension#troubleshooting">these troubleshooting steps </a>. 
+            Otherwise, please report any issues <a href="https://github.com/fedebotu/youchat-google-extension/issues"> here </a>.
+        </span>
       </p>
     )
   }
